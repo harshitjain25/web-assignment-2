@@ -1,0 +1,259 @@
+/* styles.css - the stylesheet for my about page.
+   Keeping all the styling in here instead of the HTML so the page
+   stays clean and I can reuse these styles later on other pages. */
+
+/* My color palette - I'm calling it "Warm Coastal" because it
+   reminds me of a beach town. Picked these on coolors.co and
+   tweaked them a bit:
+
+     Sand Cream     #FAF3E0 - page background
+     Warm White     #FFFCF4 - the main content card
+     Charcoal Slate #2F3E46 - normal text
+     Deep Teal      #2A6F77 - headings, borders, banner
+     Coral Sunset   #E76F51 - accent color, link hover
+     Sea Green      #2A9D8F - links, banner gradient
+     Golden Amber   #E9C46A - highlights and dividers
+
+   Fonts: Playfair Display for headings (a classy serif) and Nunito
+   for body text (a soft, rounded sans-serif that's easy to read).
+   Both are loaded from Google Fonts in the HTML, with Georgia and
+   Verdana as fallbacks in case they don't load. */
+
+/* border-box makes padding count inside the width, which makes
+   sizing everything a lot less confusing */
+* {
+    box-sizing: border-box;
+}
+
+/* whole page: cream background with dark slate text */
+body {
+    background-color: #FAF3E0;
+    color: #2F3E46;
+    font-family: Nunito, Verdana, Arial, sans-serif;
+    margin: 0;
+    padding: 0 0 40px;
+    line-height: 1.7;
+}
+
+/* the banner across the top*/
+
+/* teal-to-sea-green gradient, angled a bit so it isn't flat.
+   The extra bottom padding leaves room for the photo to overlap */
+.hero {
+    background: linear-gradient(135deg, #2A6F77 0%, #2A9D8F 100%);
+    color: #FAF3E0;
+    text-align: center;
+    padding: 48px 24px 110px;
+    /* rounded bottom corners so it looks like a wave-ish shape */
+    border-bottom-left-radius: 50% 40px;
+    border-bottom-right-radius: 50% 40px;
+}
+
+/* my logo up top, with a soft shadow so it pops off the teal */
+.logo {
+    display: block;
+    margin: 0 auto 18px;
+    width: 88px;
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.25));
+    transition: transform 0.3s ease;
+}
+
+/* tiny wiggle when you hover the logo */
+.logo:hover {
+    transform: rotate(-6deg) scale(1.05);
+}
+
+.site-name {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 34px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.tagline {
+    margin: 6px 0 0;
+    font-size: 15px;
+    opacity: 0.9;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/*my photo*/
+
+/* the photo is a wide rectangle, so I force it into a square box
+   and let object-fit crop it - otherwise it squishes into an oval.
+   The negative top margin pulls it up over the banner's edge. */
+.profile-photo {
+    display: block;
+    margin: -90px auto 0;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    object-position: center 20%; /* keeps my face in frame, not the podium */
+    border: 5px solid #FAF3E0;
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(47, 62, 70, 0.25);
+    position: relative; /* so it sits on top of the card below */
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.04);
+    box-shadow: 0 14px 36px rgba(47, 62, 70, 0.35);
+}
+
+/*the main content card*/
+
+/* a warm white card with a soft shadow, pulled up slightly so the
+   photo overlaps its top edge. Fades in when the page loads. */
+.card {
+    background-color: #FFFCF4;
+    max-width: 760px;
+    margin: -60px auto 0;
+    padding: 90px 48px 48px;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(47, 62, 70, 0.12);
+    animation: fadeUp 0.7s ease-out both;
+}
+
+/* the fade-in: starts slightly lower + invisible, slides into place */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* big page title, centered with a short amber line under it */
+h1 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 40px;
+    color: #2A6F77;
+    text-align: center;
+    margin: 0 0 8px;
+}
+
+/* the amber underline is a pseudo-element so it can be short and
+   centered instead of running the full width */
+h1::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    background-color: #E9C46A;
+    border-radius: 2px;
+    margin: 14px auto 0;
+}
+
+/* section headings with a coral bar down the left side */
+h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 26px;
+    color: #2A6F77;
+    margin: 44px 0 14px;
+    padding-left: 14px;
+    border-left: 4px solid #E76F51;
+    line-height: 1.3;
+}
+
+/* spacing the paragraphs out a bit so they're not cramped */
+p {
+    font-size: 17px;
+    margin: 0 0 18px;
+}
+
+/* the first paragraph is a bit bigger with a fancy drop cap */
+.lead {
+    font-size: 18.5px;
+}
+
+.lead::first-letter {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 58px;
+    line-height: 0.8;
+    float: left;
+    margin: 8px 10px 0 0;
+    color: #E76F51;
+}
+
+/* the pull quote: amber background strip with a teal left edge */
+blockquote {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 21px;
+    font-style: italic;
+    color: #2A6F77;
+    background-color: rgba(233, 196, 106, 0.25); /* washed-out amber */
+    border-left: 5px solid #2A6F77;
+    border-radius: 0 12px 12px 0;
+    margin: 32px 0;
+    padding: 18px 24px;
+}
+
+/*links*/
+
+/* links are sea green and bold so they stand out from the text */
+a {
+    color: #2A9D8F;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+
+/* they turn coral when you hover over them */
+a:hover {
+    color: #E76F51;
+}
+
+/* the social media links sit side by side and wrap on small screens */
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+/* each one is a pill button that lifts up and fills in on hover */
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 22px;
+    color: #2A6F77;
+    background-color: #FAF3E0;
+    border: 2px solid #2A6F77;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: transform 0.2s ease, background-color 0.2s ease,
+                color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.social-links a:hover {
+    background-color: #2A6F77;
+    color: #FAF3E0;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(42, 111, 119, 0.3);
+}
+
+/* the little colored dot before each link name */
+.social-links .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #E76F51;
+}
+
+/* each network gets a different palette color for its dot */
+.social-links a:nth-child(2) .dot { background-color: #E9C46A; }
+.social-links a:nth-child(3) .dot { background-color: #2A9D8F; }
+
+/* when the button fills in, the dot goes cream so it still shows */
+.social-links a:hover .dot {
+    background-color: #FAF3E0;
+}
