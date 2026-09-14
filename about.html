@@ -24,24 +24,48 @@
 
 <body>
 
-    <!-- the teal banner across the top with my logo and name.
-         The profile photo sits half on / half off the bottom edge -->
+    <!-- the teal banner across the top with my logo, name, and navigation.
+         Flexbox in styles.css keeps the site info and links organized -->
     <header class="hero">
-        <img class="logo" src="images/logo.svg" alt="My logo, a cream letter H with a wavy amber crossbar and a coral sun, on a teal rounded square">
-        <p class="site-name">Harshit Jain</p>
-        <p class="tagline">Student &middot; Aspiring Web Developer &middot; Atlanta, GA</p>
+
+        <!-- groups my logo, name, and tagline together -->
+        <div class="hero-info">
+
+            <img class="logo"
+                 src="images/logo.svg"
+                 alt="My logo, a cream letter H with a wavy amber crossbar and a coral sun, on a teal rounded square">
+
+            <div>
+                <p class="site-name">Harshit Jain</p>
+                <p class="tagline">
+                    Student &middot; Aspiring Web Developer &middot; Atlanta, GA
+                </p>
+            </div>
+
+        </div>
+
+        <!-- navigation links for moving around this page.
+             These are arranged side by side with Flexbox -->
+        <nav class="main-nav">
+            <a href="#about">About</a>
+            <a href="#social">Find Me Online</a>
+        </nav>
+
     </header>
 
     <!-- picture of me speaking at a World Affairs Council event -->
-    <img class="profile-photo" src="images/me.jpg" alt="Me smiling while speaking at a podium at a World Affairs Council of Atlanta event">
+    <img class="profile-photo"
+         src="images/me.jpg"
+         alt="Me smiling while speaking at a podium at a World Affairs Council of Atlanta event">
 
     <!-- everything below the banner lives inside one card -->
-    <main class="card">
+    <main class="card" id="about">
 
         <h1>About This Site</h1>
 
         <!-- the story behind the site and why I built it -->
         <h2>Why I Created This Site</h2>
+
         <p class="lead">
             Honestly, this site started as homework for my web development
             class. But somewhere between writing my first heading tag and
@@ -78,20 +102,34 @@
         </blockquote>
 
         <!-- where to find me online -->
-        <h2>Find Me Online</h2>
+        <h2 id="social">Find Me Online</h2>
+
+        <!-- Flexbox keeps these links side by side and lets them
+             wrap onto another line if the screen gets smaller -->
         <div class="social-links">
-            <a href="https://github.com/harshitjain25" target="_blank" rel="noopener">
+
+            <a href="https://github.com/harshitjain25"
+               target="_blank"
+               rel="noopener">
                 <span class="dot"></span>GitHub
             </a>
-            <a href="https://www.linkedin.com/in/harshit-jain-064a53224/" target="_blank" rel="noopener">
+
+            <a href="https://www.linkedin.com/in/harshit-jain-064a53224/"
+               target="_blank"
+               rel="noopener">
                 <span class="dot"></span>LinkedIn
             </a>
-            <a href="https://www.instagram.com/harshit_jain2508/" target="_blank" rel="noopener">
+
+            <a href="https://www.instagram.com/harshit_jain2508/"
+               target="_blank"
+               rel="noopener">
                 <span class="dot"></span>Instagram
             </a>
+
         </div>
 
     </main>
 
 </body>
+
 </html>

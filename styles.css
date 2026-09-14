@@ -35,24 +35,39 @@ body {
     line-height: 1.7;
 }
 
-/* the banner across the top*/
+/* the banner across the top */
 
 /* teal-to-sea-green gradient, angled a bit so it isn't flat.
+   Flexbox creates the main layout here by keeping the site
+   information on the left and the navigation on the right.
    The extra bottom padding leaves room for the photo to overlap */
 .hero {
     background: linear-gradient(135deg, #2A6F77 0%, #2A9D8F 100%);
     color: #FAF3E0;
-    text-align: center;
-    padding: 48px 24px 110px;
+    padding: 36px 60px 110px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+
     /* rounded bottom corners so it looks like a wave-ish shape */
     border-bottom-left-radius: 50% 40px;
     border-bottom-right-radius: 50% 40px;
 }
 
+/* keeps the logo, name, and tagline together.
+   Flexbox makes the logo sit beside the text instead of above it */
+.hero-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
 /* my logo up top, with a soft shadow so it pops off the teal */
 .logo {
     display: block;
-    margin: 0 auto 18px;
+    margin: 0;
     width: 88px;
     filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.25));
     transition: transform 0.3s ease;
@@ -79,7 +94,35 @@ body {
     text-transform: uppercase;
 }
 
-/*my photo*/
+/* navigation */
+
+/* Flexbox keeps the navigation links in one horizontal row
+   with equal spacing between them */
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-top: 18px;
+}
+
+/* keeping the navigation light so it stands out on the teal banner */
+.main-nav a {
+    color: #FAF3E0;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* amber background makes the navigation link easy to spot on hover */
+.main-nav a:hover {
+    color: #2F3E46;
+    background-color: #E9C46A;
+}
+
+/* my photo */
 
 /* the photo is a wide rectangle, so I force it into a square box
    and let object-fit crop it - otherwise it squishes into an oval.
@@ -104,7 +147,7 @@ body {
     box-shadow: 0 14px 36px rgba(47, 62, 70, 0.35);
 }
 
-/*the main content card*/
+/* the main content card */
 
 /* a warm white card with a soft shadow, pulled up slightly so the
    photo overlaps its top edge. Fades in when the page loads. */
@@ -124,6 +167,7 @@ body {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -195,7 +239,7 @@ blockquote {
     padding: 18px 24px;
 }
 
-/*links*/
+/* links */
 
 /* links are sea green and bold so they stand out from the text */
 a {
@@ -209,7 +253,8 @@ a:hover {
     color: #E76F51;
 }
 
-/* the social media links sit side by side and wrap on small screens */
+/* the social media links sit side by side and wrap on small screens.
+   This is another Flexbox layout used inside the main content */
 .social-links {
     display: flex;
     flex-wrap: wrap;
@@ -250,10 +295,48 @@ a:hover {
 }
 
 /* each network gets a different palette color for its dot */
-.social-links a:nth-child(2) .dot { background-color: #E9C46A; }
-.social-links a:nth-child(3) .dot { background-color: #2A9D8F; }
+.social-links a:nth-child(2) .dot {
+    background-color: #E9C46A;
+}
+
+.social-links a:nth-child(3) .dot {
+    background-color: #2A9D8F;
+}
 
 /* when the button fills in, the dot goes cream so it still shows */
 .social-links a:hover .dot {
     background-color: #FAF3E0;
+}
+
+/* responsive layout */
+
+/* on smaller screens the horizontal Flexbox layout changes into
+   a vertical one so the page does not feel crowded */
+@media (max-width: 700px) {
+
+    .hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 36px 24px 110px;
+    }
+
+    /* puts the logo back above the name when there is less room */
+    .hero-info {
+        flex-direction: column;
+    }
+
+    /* keeps the navigation centered underneath the site information */
+    .main-nav {
+        justify-content: center;
+        padding-top: 0;
+    }
+
+    /* gives the main card some breathing room from the screen edges */
+    .card {
+        margin-left: 20px;
+        margin-right: 20px;
+        padding-left: 28px;
+        padding-right: 28px;
+    }
 }
